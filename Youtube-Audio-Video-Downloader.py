@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-from youtube_dl import YoutubeDL
+import pafy
 
 root = Tk()  # creating tkinter window
 root.iconphoto(False, PhotoImage(file='icon.png'))  # setting window icon
@@ -15,7 +15,7 @@ def audio():
     def downloader():
         try:
             url = str(link.get())
-            YoutubeDL({'format': 'bestaudio'}).extract_info(url)
+            pafy.new(url).getbestaudio(preftype='m4a').download()
             Label(f1, text='Download Successful', font='roboto').place(relx=0.5, rely=0.8, anchor=CENTER)
         except:
             messagebox.showinfo(title='Warning', message='Enter Something!')
@@ -39,7 +39,7 @@ def video():
     def downloader():
         try:
             url = str(link.get())
-            YoutubeDL().download([url])
+            pafy.new(url).getbestvideo(preftype='mp4').download()
             Label(f1, text='Download Successful', font='roboto').place(relx=0.5, rely=0.8, anchor=CENTER)
         except:
             messagebox.showinfo(title='Warning', message='Enter Something!')
@@ -60,10 +60,10 @@ def main_menu():
     f1 = Frame().place(x=0, y=0, width=500, height=250)
     Label(f1, text='Youtube Audio/Video Downloader', font=('roboto', 20)).place(relx=0.5, rely=0.2, anchor=CENTER)
 
-    video_button = Button(f1, text='Audio Downloader', font=('roboto', 15), bg='red', fg='white', command=audio)
-    video_button.place(relx=0.3, rely=0.6, anchor=CENTER)
-    audio_button = Button(f1, text='Video Downloader', font=('roboto', 15), bg='red', fg='white', command=video)
-    audio_button.place(relx=0.7, rely=0.6, anchor=CENTER)
+    audio_button = Button(f1, text='Audio Downloader', font=('roboto', 15), bg='red', fg='white', command=audio)
+    audio_button.place(relx=0.3, rely=0.6, anchor=CENTER)
+    video_button = Button(f1, text='Video Downloader', font=('roboto', 15), bg='red', fg='white', command=video)
+    video_button.place(relx=0.7, rely=0.6, anchor=CENTER)
 
 
 main_menu()

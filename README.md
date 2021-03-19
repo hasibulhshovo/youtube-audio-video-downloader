@@ -5,7 +5,7 @@ This is a python script to download YouTube videos or audios.
 
 ## How to use:
 1. Install Python 3.8.X from [here](https://www.python.org/downloads/).
-2. Install youtube_dl `pip install youtube_dl`.
+2. Install pafy `pip install pafy`.
 3. Install tkinter `pip install tkinter`.
 4. Clone this repository: `git clone https://github.com/iam-hasibul/youtube-audio-video-downloader` or click `Download ZIP` in the right panel and extract it.
 5. Run `python Youtube-Audio-Video-Downloader.py` from the repository's directory.
